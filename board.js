@@ -24,33 +24,43 @@ class Board {
 
     isInCheck() {
         // first find king
-        let i = 0; // row
-        let j = 0; // col
+        let i = -1; // row
+        let j = -1; // col
         let found = false;
-        if (this.turn === 0) {
-            for (const [n, row] of this.locations.entries()) {
-                for (const [m, sq] of row.entries()) {
-                    if (sq instanceof Piece && sq.color === 0 && sq.type === 'king') {
-                        i = n;
-                        j = m;
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) {
+        for (const [n, row] of this.locations.entries()) {
+            for (const [m, sq] of row.entries()) {
+                if (sq instanceof Piece && sq.color === this.color && sq.type === 'king') {
+                    i = n;
+                    j = m;
+                    found = true;
                     break;
-                } 
+                }
             }
+            if (found) {
+                break;
+            } 
         }
         
-        // next find knight checks
-        let possible_knight_ck_locs = [[i+1,j+2], [i+1,j-2], [i-1,j+2], [i-1,j-2], [i+2,j+1], [i+2,j-1], [i-2,j+1], [i-2,j-1]]
-        let knight_ck_locs = [];
-        for (const [a,b] of possible_knight_ck_locs) {
-            if (a < 7 && a >= 0 && b < 7 && b >= 0) {
-                knight_ck_locs.push([a,b])
+        
+        // find knight checks
+        let knight_ck_locs = [[i+1,j+2], [i+1,j-2], [i-1,j+2], [i-1,j-2], 
+                              [i+2,j+1], [i+2,j-1], [i-2,j+1], [i-2,j-1]];
+
+        // filter out ones not on the board
+        // if valid sq check if a opColor knight is on it
+        for (const [a,b] of knight_ck_locs) {
+            if (a <= 7 && a >= 0 && b <= 7 && b >= 0) {
+                let sq = this.locations[a][b];
+                if (sq instanceof Piece && sq.type === "knight" && sq.color === sq.opColor) {
+                    return true;
+                }
             }
         }
+
+        // find straight checks
+        // search up from king
+        let x = 0;
+        // while i + x
     }
 }
 
