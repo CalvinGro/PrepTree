@@ -40,7 +40,12 @@ class Board {
                 break;
             } 
         }
-        
+        if (turn === 0){
+            let possible_pawn_ck_locs = [[i+1,j-1], [i+1,j+1]]
+        }
+        else{
+            let possible_pawn_ck_locs = [[i-1,j-1], [i-1,j+1]]
+        }
         
         // find knight checks
         let knight_ck_locs = [[i+1,j+2], [i+1,j-2], [i-1,j+2], [i-1,j-2], 
