@@ -40,6 +40,8 @@ class Board {
                 break;
             } 
         }
+
+        //hi
         if (turn === 0){
             let possible_pawn_ck_locs = [[i+1,j-1], [i+1,j+1]]
         }
