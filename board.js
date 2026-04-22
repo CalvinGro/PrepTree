@@ -59,8 +59,31 @@ class Board {
 
         // find straight checks
         // search up from king
-        let x = 0;
-        // while i + x
+        let x = 1;
+        while (i + x < 8) {
+            let sq = this.locations[x][j];
+            if (! sq instanceof Piece) {
+                x++;
+                continue;
+            } 
+            // hit piece
+            if ((sq.type === "rook" || sq.type === "queen") && sq.color === this.turn.opColor()) {
+                return true;
+            }
+        }
+        // search up from king
+        let x = 1;
+        while (i + x < 8) {
+            let sq = this.locations[x][j];
+            if (! sq instanceof Piece) {
+                x++;
+                continue;
+            } 
+            // hit piece
+            if ((sq.type === "rook" || sq.type === "queen") && sq.color === this.turn.opColor()) {
+                return true;
+            }
+        }
     }
 }
 
