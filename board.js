@@ -41,12 +41,19 @@ class Board {
             } 
         }
         if (turn === 0){
-            let possible_pawn_ck_locs = [[i+1,j-1], [i+1,j+1]]
+            let pawn_ck_locs = [[i+1,j-1], [i+1,j+1]]
         }
         else{
-            let possible_pawn_ck_locs = [[i-1,j-1], [i-1,j+1]]
+            let pawn_ck_locs = [[i-1,j-1], [i-1,j+1]]
         }
-        
+        for (const [a,b] of pawn_ck_locs) {
+            if (a <= 7 && a >= 0 && b <= 7 && b >= 0) {
+                let sq = this.locations[a][b];
+                if (sq instanceof Piece && sq.type === "pawn" && sq.color === sq.opColor) {
+                    return true;
+                }
+            }
+        }
         // find knight checks
         let knight_ck_locs = [[i+1,j+2], [i+1,j-2], [i-1,j+2], [i-1,j-2], 
                               [i+2,j+1], [i+2,j-1], [i-2,j+1], [i-2,j-1]];
