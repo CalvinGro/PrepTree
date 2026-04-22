@@ -24,13 +24,15 @@ class Board {
 
     isInCheck() {
         // first find king
-        let kingsq = 0;
+        let i = 0; // row
+        let j = 0; // col
         let found = false;
         if (this.turn === 0) {
-            for (const [i, row] of this.locations.entries()) {
-                for (const [j, sq] of row.entries()) {
-                    if (sq instanceof Piece && sq.color == 0 && sq.type == 'king') {
-                        kingsq = [i, j];
+            for (const [n, row] of this.locations.entries()) {
+                for (const [m, sq] of row.entries()) {
+                    if (sq instanceof Piece && sq.color === 0 && sq.type === 'king') {
+                        i = n;
+                        j = m;
                         found = true;
                         break;
                     }
@@ -40,9 +42,15 @@ class Board {
                 } 
             }
         }
-
-        // next check knight checks
-        let knight_ck_locs = [[i,j]]
+        
+        // next find knight checks
+        let possible_knight_ck_locs = [[i+1,j+2], [i+1,j-2], [i-1,j+2], [i-1,j-2], [i+2,j+1], [i+2,j-1], [i-2,j+1], [i-2,j-1]]
+        let knight_ck_locs = [];
+        for (const [a,b] of possible_knight_ck_locs) {
+            if (a < 7 && a >= 0 && b < 7 && b >= 0) {
+                knight_ck_locs.push([a,b])
+            }
+        }
     }
 }
 
