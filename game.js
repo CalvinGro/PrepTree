@@ -69,6 +69,7 @@ export class Game {
                 if (startInput === "show moves") {
                     console.log(moves);
                 }
+
                 
                 // validate move
                 if (moves.has(startInput) && moves.get(startInput).has(endInput)) {
@@ -76,8 +77,26 @@ export class Game {
 
                     startInput = startInput.split(",").map(Number);
                     endInput = endInput.split(",").map(Number);
-                    // make move
-                    this.board.makeMove(startInput, endInput);
+
+                    let promotion = null;
+                    const valid_promotions = new Set("knight", "rook", "bishop", "queen");
+                    let invalid_promotion = true;
+                    let r = endInput.split(",").map(Number)[0];
+                    let c = endInput.split(",").map(Number)[1];
+                    if ((r === 7 || r === 0) && this.board.locations[r][c].type === "pawn") {
+                        while (invalid_promotion) {
+                            promotion = await ask("What do you want to promote to?: ")
+                            if (valid_promotions.has(promotion)) {
+                                invalid_promotion = false;
+                            }
+                        }
+                    }
+                    if (promotion === null) {
+                        this.board.makeMove(startInput, endInput)
+                    } else {
+                        // make move
+                        this.board.makeMove(startInput, endInput, promotion);
+                    }
                 }
             }
             
