@@ -54,4 +54,13 @@ export let startingBoard = new Board([
         new Piece("rook", 1)
     ]], 0, [], true, true, true, true);
 
-
+export let promotionBoard = new Board([
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, new Piece("pawn", 0), null, null],
+    [new Piece("king", 0), null, null, null, null, null, null, new Piece("king", 1)]
+], 0, [], false, false, false, false);

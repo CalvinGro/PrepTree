@@ -1,22 +1,182 @@
-import { Piece, Board } from "./board.js";
-import { Game } from "./game.js";
+
+
 import { startingBoard } from "./starting_locations.js";
+import { Piece, Board } from "./board.js";
 
-// startingBoard.displayBoardInTerminal();
+// 
+export let knightMoveBoard = new Board([
+    [
+        null,
+        new Piece("pawn", 0),
+        null,
+        null,
+        null,
+        new Piece("pawn", 1),
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        new Piece("knight", 0),
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        new Piece("pawn", 0),
+        null,
+        null,
+        null,
+        new Piece("pawn", 1),
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        new Piece("pawn", 0),
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        new Piece("king", 1)
+    ],
+    [
+        new Piece("king", 0),
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ]
+], 0, [], false, false, false, false);
 
-// console.log(startingBoard.findValidMoves());
-// console.log(startingBoard.findKnightMoves()); 
-// startingBoard.makeMove([0,1],[2,1]);
-// startingBoard.makeMove([0,2],[2,2]);
-// startingBoard.makeMove([0,3],[2,3]);
-// startingBoard.makeMove([0,5],[2,5]);
-// startingBoard.makeMove([0,6],[2,6]);
-// startingBoard.displayBoardInTerminal();
+export let BishopMoveBoard = new Board([
+    [
+        new Piece("king", 0),
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        new Piece("knight", 0)
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        new Piece("pawn", 0),
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        new Piece("bishop", 1),
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        null,
+        null,
+        new Piece("knight", 1),
+        null,
+        null,
+        null,
+        null,
+        new Piece("king", 1)
+    ]
+], 1, [], false, false, false, false);
 
-// console.log(startingBoard.findValidMoves());
-// startingBoard.displayBoardInTerminal();
-// startingBoard.makeMove([0,4],[0,6]);
-// startingBoard.displayBoardInTerminal();
-
-let first_game = new Game();
-first_game.playTerminalGame();
+export let promotionBoard = new Board([
+    [new Piece("king", 0), null, null, null, null, null, null, new Piece("king", 1)],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, new Piece("pawn", 0), null, null],
+    [null, null, null, null, null, null, null, null]
+], 0, [], false, false, false, false);

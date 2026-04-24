@@ -30,3 +30,5 @@ Calvin         4/23/26   start 7:45pm  | end 9:30pm  - wrote findValidMoves, sta
                                                      - to all the methods and classes.
 Calvin         4/24/26   start 8:30am  | end 8:50am  - started working on playTerminalGame
 Calvin         4/24/26   start 9:50am  | end 11:45am - Finished playTerminalGame, fixed castling logic and some move bugs
+Calvin         4/24/26   start 2:45pm  | end 4:45pm  - Created tests for bishop and knight moves. Additionally, used TDD
+                                                       to add pawn promotion and the accompanying test.
