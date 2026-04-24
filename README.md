@@ -16,6 +16,17 @@ The React Compiler is not enabled on this template because of its impact on dev 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 
 ## Hour Log
-Calvin & Silas 3/31/26   start 3:30pm | end 4:30pm - spent learning react
-Calvin & Silas 4/7/26    start 2:45pm | end 4:00pm - starting backend design
-Calvin         4/22/26   start 2:40pm |
+Calvin & Silas 3/31/26   start 3:30pm  | end 4:30pm  - spent learning react
+Calvin & Silas 4/7/26    start 2:45pm  | end 4:00pm  - starting backend design
+Calvin         4/22/26   start 2:40pm  | end 4:45pm  - built out board and pieces classes
+                                                       started working on isInCheck method
+Silas          4/22/26   start 3:00pm  | end 4:45pm  - started working on isInCheck method
+Calvin         4/22/26   start 6:45pm  | end 9:40pm  - finished the isInCheck method, wrote terminal display methods,
+                                                       wrote findPieces and makeMove
+Calvin         4/22/26   start 10:15pm | end 10:50pm - wrote methods to find moves for bishops, queens, and rooks
+Calvin         4/23/26   start 7:20am  | end 7:50am  - wrote method to find moves for knight
+Calvin         4/23/26   start 11:15am | end 11:50am - wrote methods to find pawn and king moves
+Calvin         4/23/26   start 7:45pm  | end 9:30pm  - wrote findValidMoves, starting_locations, and added documentation
+                                                     - to all the methods and classes.
+Calvin         4/24/26   start 8:30am  | end 8:50am  - started working on playTerminalGame
+Calvin         4/24/26   start 9:50am  | end 11:45am - Finished playTerminalGame, fixed castling logic and some move bugs
