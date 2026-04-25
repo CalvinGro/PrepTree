@@ -720,9 +720,9 @@ export class Board {
         // first search for the queen and store its pos in queenPos
         let queenPos = this.findPieces("queen", this.turn);
         let queen_moves = new Map();
+
         
-        if (!(queenPos.length === 0)) {
-            let [y,x] = queenPos[0];
+        for (const [y, x] of queenPos) {
 
             queen_moves.set([y,x].join(','), new Set());
 

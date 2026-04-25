@@ -78,6 +78,7 @@ export class Game {
                     startInput = startInput.split(",").map(Number);
                     endInput = endInput.split(",").map(Number);
 
+                    
                     let promotion = null;
                     const valid_promotions = new Set(["knight", "rook", "bishop", "queen"]);
                     let invalid_promotion = true;
@@ -90,6 +91,8 @@ export class Game {
                             }
                         }
                     }
+
+
                     if (promotion === null) {
                         this.board.makeMove(startInput, endInput)
                     } else {

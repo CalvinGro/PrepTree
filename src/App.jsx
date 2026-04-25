@@ -15,14 +15,13 @@ function App() {
   }
 
   function handleSquareClick(r, c) {
-    const oldpiece = board.locations[selected[0]][selected[1]];
     const piece = board.locations[r][c];
     const clickKey = `${r},${c}`;
 
     // If we have a piece selected, try to move it
     if (selected) {
       const validMoves = getValidMovesForSelected();
-      
+      const oldpiece = board.locations[selected[0]][selected[1]];      
       if (validMoves.has(clickKey)) {
         
         if ((r === 7 || r ===0)&&oldpiece.type==='pawn' ){
