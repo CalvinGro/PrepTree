@@ -79,13 +79,12 @@ export class Game {
                     endInput = endInput.split(",").map(Number);
 
                     let promotion = null;
-                    const valid_promotions = new Set("knight", "rook", "bishop", "queen");
+                    const valid_promotions = new Set(["knight", "rook", "bishop", "queen"]);
                     let invalid_promotion = true;
-                    let r = endInput.split(",").map(Number)[0];
-                    let c = endInput.split(",").map(Number)[1];
-                    if ((r === 7 || r === 0) && this.board.locations[r][c].type === "pawn") {
+                    if ((endInput[0] === 7 || endInput[0] === 0) && this.board.locations[startInput[0]][startInput[1]].type === "pawn") {
                         while (invalid_promotion) {
                             promotion = await ask("What do you want to promote to?: ")
+                            console.log(promotion);
                             if (valid_promotions.has(promotion)) {
                                 invalid_promotion = false;
                             }

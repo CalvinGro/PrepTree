@@ -106,3 +106,37 @@ if (bishopMoves.size === 7) {
 
 
 
+//      Verify Queen Moves
+// This verifies that the queens moves are correct. I checks 
+// that it can't take its own pieces and that it 
+// _______________________________________
+//  ♙  |    |    |    |    |    |    | ♔
+// _______________________________________
+//     | ♟  |    |    |    |    |    |  
+// _______________________________________
+//  ♛  |    |    |    |    |    | ♙  |  
+// _______________________________________
+//     |    |    |    |    |    |    |  
+// _______________________________________
+//     |    | ♟  |    |    |    |    |  
+// _______________________________________
+//     |    |    |    |    |    |    |  
+// _______________________________________
+//     |    |    |    |    |    |    |  
+// _______________________________________
+//     |    |    |    | ♚  |    |    |  
+// _______________________________________
+let queenMoves = testBd.queenMoveBoard.findValidMoves().get("5,0");
+const queenCorrectMoves = ["6,0", "7,0", "5,1", "5,2", "5,3", "5,4", "5,5", 
+                           "5,6", "4,1", "4,0", "3,0", "2,0", "1,0", "0,0"];
+if (queenMoves.size === 14) {
+    for (const corMove of queenCorrectMoves) {
+        if (!queenMoves.has(corMove)) {
+            console.log("Did not pass Queen Move Verification.");
+            break;
+        }
+    }
+    console.log("Passed Queen Move Verification.");
+} else {
+    console.log("Did not pass Queen Move Verification.");
+}

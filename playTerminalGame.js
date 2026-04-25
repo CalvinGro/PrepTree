@@ -1,6 +1,8 @@
 import { Piece, Board } from "./board.js";
 import { Game } from "./game.js";
 import { startingBoard } from "./starting_locations.js";
+import * as testBd from "./testBoard.js"
+
 
 // startingBoard.displayBoardInTerminal();
 
@@ -18,5 +20,5 @@ import { startingBoard } from "./starting_locations.js";
 // startingBoard.makeMove([0,4],[0,6]);
 // startingBoard.displayBoardInTerminal();
 
-let first_game = new Game();
+let first_game = new Game(testBd.promotionBoard);
 first_game.playTerminalGame();
