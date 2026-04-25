@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Board } from './board.js';
+import { Game } from './game.js';
 import { startingBoard } from './starting_locations.js';
 import './App.css';
 
@@ -98,3 +98,4 @@ function App() {
 }
 
 export default App;
+function App() {}
