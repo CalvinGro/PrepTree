@@ -58,23 +58,14 @@ export class Piece {
      *       Additionally, this method was completed by ChatGPT
      */
     display() {
-        if (this.color === 1) {
-            if (this.type === "king") return "\u2654";
-            if (this.type === "queen") return "\u2655";
-            if (this.type === "rook") return "\u2656";
-            if (this.type === "bishop") return "\u2657";
-            if (this.type === "knight") return "\u2658";
-            if (this.type === "pawn") return "\u2659";
-        } else if (this.color === 0) {
-            if (this.type === "king") return "\u265A";
-            if (this.type === "queen") return "\u265B";
-            if (this.type === "rook") return "\u265C";
-            if (this.type === "bishop") return "\u265D";
-            if (this.type === "knight") return "\u265E";
-            if (this.type === "pawn") return "\u265F";
-        } else {
-            return "?";
-        }
+        // We use solid symbols for both to allow clear coloring via CSS
+        if (this.type === "king") return "\u265A";
+        if (this.type === "queen") return "\u265B";
+        if (this.type === "rook") return "\u265C";
+        if (this.type === "bishop") return "\u265D";
+        if (this.type === "knight") return "\u265E";
+        if (this.type === "pawn") return "\u265F";
+        return "?";
     }
 }
 

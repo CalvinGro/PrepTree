@@ -155,19 +155,18 @@ h1 {
 .piece {
   z-index: 2;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.piece-white {
+  color: #ffffff;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.piece-black {
+  color: #1a0f0d; /* Very dark brown/black */
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
 }
 
 .square:hover .piece {
   transform: scale(1.15) translateY(-5px);
-  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* Specific styling for white and black characters if needed */
-.light .piece {
-  filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
-}
-
-.dark .piece {
-  filter: drop-shadow(0 0 1px rgba(255,255,255,0.2));
 }
