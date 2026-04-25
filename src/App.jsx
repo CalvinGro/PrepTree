@@ -10,17 +10,18 @@ function App() {
   function getValidMovesForSelected() {
     if (!selected) return new Set();
     const allMoves = board.findValidMoves();
+    console.log(allMoves)
     const key = `${selected[0]},${selected[1]}`;
     return allMoves.has(key) ? allMoves.get(key) : new Set();
   }
 
   function handleSquareClick(r, c) {
-    const oldpiece = board.locations[selected[0]][selected[1]];
     const piece = board.locations[r][c];
     const clickKey = `${r},${c}`;
 
     // If we have a piece selected, try to move it
     if (selected) {
+      const oldpiece = board.locations[selected[0]][selected[1]];
       const validMoves = getValidMovesForSelected();
       
       if (validMoves.has(clickKey)) {
