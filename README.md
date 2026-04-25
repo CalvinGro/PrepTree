@@ -33,8 +33,11 @@ Calvin         4/24/26   start 9:50am  | end 11:45am - Finished playTerminalGame
 Calvin         4/24/26   start 2:45pm  | end 4:45pm  - Created tests for bishop and knight moves. Additionally, used TDD
                                                        to add pawn promotion and the accompanying test.
 Calvin         4/24/26   start 8:15pm  | end 8:30pm  - Created test for queen moves.
-
+Calvin         4/25/26   start 2:00pm  | end 
+Silas          4/25/26   start 2:00pm  | end 
 
 ## features to added
-- 3 fold rep
-- 50 move rule
+- 3 fold rep TDD
+- 50 move rule TDD
+- game clock
+- more tests (move verification, piece pinning, check, checkmate, etc.)

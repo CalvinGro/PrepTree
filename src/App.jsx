@@ -23,7 +23,7 @@ function App() {
     if (selected) {
       const oldpiece = board.locations[selected[0]][selected[1]];
       const validMoves = getValidMovesForSelected();
-      
+      const oldpiece = board.locations[selected[0]][selected[1]];      
       if (validMoves.has(clickKey)) {
         
         if ((r === 7 || r ===0)&&oldpiece.type==='pawn' ){
