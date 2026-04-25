@@ -22,9 +22,11 @@ function ask(question) {
 
 
 export class Game {
-    constructor(board = startingBoard, state = "active") {
-        this.board = board;
+    constructor(curBoard = startingBoard, state = "active") {
+        this.curBoard = curBoard;
         this.state = state; // "active", "checkmate", "stalemate"
+        this.previousBoards = new Map();
+        this.currentMoves = new Map();
     }
 
     async playTerminalGame() {
@@ -78,7 +80,7 @@ export class Game {
                     startInput = startInput.split(",").map(Number);
                     endInput = endInput.split(",").map(Number);
 
-                    
+
                     let promotion = null;
                     const valid_promotions = new Set(["knight", "rook", "bishop", "queen"]);
                     let invalid_promotion = true;
@@ -106,4 +108,53 @@ export class Game {
             this.board.turn = this.board.opColor();
         }
     }
+
+    getMovesFromSquare(square) {
+
+        if (this.currentMoves.size === 0) {
+            this.currentMoves = this.curBoard.findValidMoves();
+        }
+
+        const [y,x] = square;
+        const squareKey = y+","+x;
+        let moves = new Set();
+        if (this.curBoard.locations[y][x] instanceof Piece) {
+            moves = this.currentMoves.get(squareKey);
+        }
+        let unconcatMoves = new Set();
+        for (let move of moves) {
+            unconcatMoves.add(move.split(",").map(Number));
+        }
+        return unconcatMoves;
+    }
+
+    movePiece(start, end, promoteTo = null) {
+        // start and end are in form [1,2] not strings
+
+        const startStr = start[0] + "," + start[1];
+        const endStr = end[0] + "," + end[1];
+
+        this.curBoard.makeMove(start, end, promoteTo);
+        this.curBoard.turn = this.curBoard.opColor();
+
+        this.currentMoves = this.curBoard.findValidMoves();
+
+        if (this.currentMoves.size === 0) {
+            if (this.curBoard.isInCheck) {
+                if (this.curBoard.turn === 0) {
+                    this.state = "Black Wins by Checkmate";
+                } else {
+                    this.state = "White Wins by Checkmate";
+                }
+            }   else {
+                this.state = "Stalemate White and Black Lose";
+            }
+        }
+        
+        return [this.curBoard, this.state];
+
+        // will return board
+        // will return state
+    }
+
 }
