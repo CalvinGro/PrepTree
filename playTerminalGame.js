@@ -1,7 +1,7 @@
-import { Piece, Board } from "./board.js";
-import { Game } from "./game.js";
-import { startingBoard } from "./starting_locations.js";
-import * as testBd from "./testBoard.js"
+import { Piece, Board } from "./src/board.js";
+import { Game } from "./src/game.js";
+import { startingBoard } from "./src/starting_locations.js";
+import * as testBd from "./src/testBoard.js"
 
 
 // startingBoard.displayBoardInTerminal();
