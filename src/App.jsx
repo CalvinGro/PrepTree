@@ -15,6 +15,7 @@ function App() {
   }
 
   function handleSquareClick(r, c) {
+    const oldpiece = board.locations[selected[0]][selected[1]];
     const piece = board.locations[r][c];
     const clickKey = `${r},${c}`;
 
@@ -23,7 +24,14 @@ function App() {
       const validMoves = getValidMovesForSelected();
       
       if (validMoves.has(clickKey)) {
-        board.makeMove(selected, [r, c]);
+        
+        if ((r === 7 || r ===0)&&oldpiece.type==='pawn' ){
+          console.log("bruh");
+          board.makeMove(selected, [r, c], "queen");
+        }
+        else{
+          board.makeMove(selected, [r, c]);
+        }
 
         board.turn = board.opColor();
 
