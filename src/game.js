@@ -25,7 +25,8 @@ export class Game {
     constructor(curBoard = startingBoard, state = "active") {
         this.curBoard = curBoard;
         this.state = state; // "active", "checkmate", "stalemate"
-        this.previousBoards = new Map();
+        this.prevBoards = new Map();
+        this.prevBoardsCount = 1;
         this.currentMoves = new Map();
     }
 
@@ -128,9 +129,35 @@ export class Game {
         return unconcatMoves;
     }
 
+    piecesLeftCount() {
+        let count = 0;
+        for (const row of this.curBoard.locations) {
+            for (const sq of row) {
+                if (sq instanceof Piece) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    boardStr() {
+        let boardStr = [];
+
+        for (const row of this.curBoard.locations) {
+            for (const sq of row) {
+                if (sq === null) boardStr.push(" ");
+                else boardStr.push(sq.type + sq.color);
+            }
+        }
+        return boardStr.join("");
+    }
+
+
     movePiece(start, end, promoteTo = null) {
         // start and end are in form [1,2] not strings
 
+        const pieceCountBefore = this.piecesLeftCount();
         const startStr = start[0] + "," + start[1];
         const endStr = end[0] + "," + end[1];
 
@@ -139,6 +166,7 @@ export class Game {
 
         this.currentMoves = this.curBoard.findValidMoves();
 
+        // check for stalemate or checkmate
         if (this.currentMoves.size === 0) {
             if (this.curBoard.isInCheck) {
                 if (this.curBoard.turn === 0) {
@@ -147,14 +175,39 @@ export class Game {
                     this.state = "White Wins by Checkmate";
                 }
             }   else {
-                this.state = "Stalemate White and Black Lose";
+                this.state = "Stalemate, No Available Moves";
             }
         }
-        
-        return [this.curBoard, this.state];
+
+        // check for 3-fold rep or 50 move rule
+        if (this.state === "active") {
+
+
+            // detect pawn move or piece take and reset prevBoards and count
+            const pieceCountAfter = this.piecesLeftCount();
+            if (this.curBoard.locations[end[0]][end[1]].type === "pawn" || pieceCountBefore !== pieceCountAfter) {
+                this.prevBoards = new Map();
+                this.prevBoardsCount = 0;
+            }
+
+
+            // add current to prevBoards map
+            if (this.prevBoards.has(this.boardStr())) {
+                this.prevBoards.set(this.boardStr(), this.prevBoards.get(this.boardStr()) + 1);
+            } else this.prevBoards.set(this.boardStr(), 1);
+            this.prevBoardsCount++;
+
+            // change state if needed
+            if (this.prevBoards.get(this.boardStr()) === 3) {
+                this.state = "Stalemate, 3-Fold Repitition";
+            } else if (this.prevBoardsCount >= 50) {
+                this.state = "Stalemate, 50 Move Rule";
+            }
+        }
 
         // will return board
         // will return state
+        return [this.curBoard, this.state];
     }
 
 }

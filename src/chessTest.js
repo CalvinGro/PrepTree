@@ -1,7 +1,35 @@
 
 import { startingBoard } from "./starting_locations.js";
 import { Piece, Board } from "./board.js";
-import * as testBd from "./testBoard.js"
+import * as testBd from "./testBoard.js";
+import { Game } from "./game.js";
+
+
+
+
+//      TDD Verify 3-Fold Repeation Stalemate
+// This test has a game starting from just the starting pos. It then moves
+// the same two knights for black and white back and forth. Thus, causing 
+// a stalemate via 3-fold repetition. Then the test checks if the game's 
+// state is "Stalemate".
+let three_fold_game = new Game();
+let _ = three_fold_game.movePiece([0,1], [2,2]);
+_ = three_fold_game.movePiece([7,1], [5,2]);
+_ = three_fold_game.movePiece([2,2], [0,1]);
+_ = three_fold_game.movePiece([5,2], [7,1]);
+_ = three_fold_game.movePiece([0,1], [2,2]);
+_ = three_fold_game.movePiece([7,1], [5,2]);
+_ = three_fold_game.movePiece([2,2], [0,1]);
+_ = three_fold_game.movePiece([5,2], [7,1]);
+_ = three_fold_game.movePiece([0,1], [2,2]);
+_ = three_fold_game.movePiece([7,1], [5,2]);
+_ = three_fold_game.movePiece([2,2], [0,1]);
+let [_board, state] = three_fold_game.movePiece([5,2], [7,1]);
+if (state === "Stalemate, 3-Fold Repitition") {
+    console.log("Passed 3-Fold Rep Stalemate Verification.");   
+} else {
+    console.log("Did not pass 3-Fold Rep Stalemate Verification.");  
+}
 
 
 
@@ -32,7 +60,7 @@ if (testBd.promotionBoard.locations[7][5].type === "queen") {
 } else {
     console.log("Did not Pass Pawn Promotion Verification.");
 }
-testBd.promotionBoard.displayBoardInTerminal();
+
 
 
 //      Verify Knight Moves
@@ -140,3 +168,6 @@ if (queenMoves.size === 14) {
 } else {
     console.log("Did not pass Queen Move Verification.");
 }
+
+
+
