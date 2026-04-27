@@ -12,11 +12,11 @@ import { startingBoard } from "./starting_locations.js";
 import { Piece, Board } from "./board.js";
 
 // ChatGPT generated, necessary for terminal input
-import readline from "readline";
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+// import readline from "readline";
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 function ask(question) {
     return new Promise(resolve => rl.question(question, resolve));
 }
@@ -227,16 +227,23 @@ export class Game {
      */
     movePiece(start, end, promoteTo = null) {
         // start and end are in form [1,2] not strings
-
+        let noMoves = true
         const pieceCountBefore = this.piecesLeftCount();
 
         this.curBoard.makeMove(start, end, promoteTo);
         this.curBoard.turn = this.curBoard.opColor();
-
+        
+        
         this.currentMoves = this.curBoard.findValidMoves();
-
+        const values = [...this.currentMoves.values()];
+        for (let i = 0; i < values.length; i++) {
+            if (values[i].size !== 0) {
+                noMoves = false;
+                break;
+            }
+        }
         // check for stalemate or checkmate
-        if (this.currentMoves.size === 0) {
+        if (noMoves) {
             if (this.curBoard.isInCheck) {
                 if (this.curBoard.turn === 0) {
                     this.state = "Black Wins by Checkmate";
