@@ -37,7 +37,8 @@ Calvin         4/25/26   start 2:00pm  | end 5:30pm  - Worked on developing / de
                                                        and getMovesFromSquare.
 Silas          4/25/26   start 2:00pm  | end 5:30pm  - Worked on developing / debugging frontend and added the methods movePiece 
                                                        and getMovesFromSquare.
-Calvin         4/26/26   start 11:45   | end 
+Calvin         4/26/26   start 11:45   | end 12:45   - Wrote 3-fold repitition test and implementation for that and 50 rule move.
+Calvin         4/26/26   start 7:30    | end 8:30    - Wrote en passant test and finished / fixed its implementation.
 ## features to added
 - 3 fold rep TDD
 - 50 move rule TDD
