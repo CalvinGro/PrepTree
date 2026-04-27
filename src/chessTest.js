@@ -5,6 +5,33 @@ import * as testBd from "./testBoard.js";
 import { Game } from "./game.js";
 
 
+//      TDD Verify En Passant 
+// _______________________________________
+//  ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜
+// _______________________________________
+//  ♟ | ♟ | ♟ |    | ♟ | ♟ | ♟ | ♟
+// _______________________________________
+//     |    |    |    |    |    |    |  
+// _______________________________________
+//     |    |    |    |    |    |    |  
+// _______________________________________
+//     |    |    | ♟ |    |    |    |  
+// _______________________________________
+//     |    |    |    |    |    |    |  
+// _______________________________________
+//  ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟ | ♟
+// _______________________________________
+//  ♜ | ♞ | ♝ | ♛ | ♚ | ♝ | ♞ | ♜
+// _______________________________________
+let en_passant_game = new Game(testBd.enPassantBoard);
+let _returns = en_passant_game.movePiece([1,2], [3,2]);
+_returns = en_passant_game.movePiece([3,3], [2,2]);
+
+if (en_passant_game.curBoard.locations[2][2] instanceof Piece || en_passant_game.curBoard.locations[2][2].type === "pawn") {
+    console.log("Passed En Passant Verification."); 
+} else {
+    console.log("Did Not Pass En Passant Verification."); 
+}
 
 
 //      TDD Verify 3-Fold Repeation Stalemate
