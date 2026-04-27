@@ -393,7 +393,8 @@ export class Board {
                 this.locations[7][7] = null;
             }
         }
-        
+        this.en_passant = [];
+        // determine if en passant is possible for oponent
         this.locations[c][d] = this.locations[a][b];
         this.locations[a][b] = null;
 
@@ -870,7 +871,7 @@ export class Board {
                 } else if (sq instanceof Piece && sq.color === this.opColor()) {
                     pawn_moves.get([y,x].join(',')).add([n, m].join(','));
                 // check for en passant moves
-                } else if (sq === this.en_passant) {
+                } else if ([n,m] === this.en_passant) {
                     pawn_moves.get([y,x].join(',')).add([n, m].join(','));
                 }
             }
