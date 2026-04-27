@@ -62,13 +62,13 @@ export default function App() {
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 cursor: 'pointer',
-                                fontSize: '20px',
-                                color: 'black',
-                                fontWeight: 'bold',
+                                fontSize: '40px',
+                                color: piece ? (piece.color === 0 ? 'white' : 'black') : 'transparent',
+                                textShadow: piece ? (piece.color === 0 ? '0 0 3px black' : '0 0 3px white') : 'none',
                                 userSelect: 'none'
                             }}
                         >
-                            {piece ? `${piece.type[0]}${piece.color === 0 ? 'W' : 'B'}` : ''}
+                            {piece ? piece.display() : ''}
                         </div>
                     ))
                 )}

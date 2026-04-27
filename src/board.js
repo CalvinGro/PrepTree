@@ -58,7 +58,6 @@ export class Piece {
      *       Additionally, this method was completed by ChatGPT
      */
     display() {
-        // We use solid symbols for both to allow clear coloring via CSS
         if (this.type === "king") return "\u265A";
         if (this.type === "queen") return "\u265B";
         if (this.type === "rook") return "\u265C";
