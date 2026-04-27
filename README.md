@@ -27,7 +27,7 @@ Calvin         4/22/26   start 10:15pm | end 10:50pm - wrote methods to find mov
 Calvin         4/23/26   start 7:20am  | end 7:50am  - wrote method to find moves for knight
 Calvin         4/23/26   start 11:15am | end 11:50am - wrote methods to find pawn and king moves
 Calvin         4/23/26   start 7:45pm  | end 9:30pm  - wrote findValidMoves, starting_locations, and added documentation
-                                                     - to all the methods and classes.
+                                                     - to all the methods and classes.                                            
 Calvin         4/24/26   start 8:30am  | end 8:50am  - started working on playTerminalGame
 Calvin         4/24/26   start 9:50am  | end 11:45am - Finished playTerminalGame, fixed castling logic and some move bugs
 Calvin         4/24/26   start 2:45pm  | end 4:45pm  - Created tests for bishop and knight moves. Additionally, used TDD
@@ -37,10 +37,9 @@ Calvin         4/25/26   start 2:00pm  | end 5:30pm  - Worked on developing / de
                                                        and getMovesFromSquare.
 Silas          4/25/26   start 2:00pm  | end 5:30pm  - Worked on developing / debugging frontend and added the methods movePiece 
                                                        and getMovesFromSquare.
-Calvin         4/26/26   start 11:45   | end 12:45   - Wrote 3-fold repitition test and implementation for that and 50 rule move.
-Calvin         4/26/26   start 7:30    | end 8:30    - Wrote en passant test and finished / fixed its implementation.
+Calvin         4/26/26   start 11:45am | end 12:45am - Wrote 3-fold repitition test and implementation for that and 50 rule move.
+Calvin         4/26/26   start 7:30pm  | end 8:30pm  - Wrote en passant test and finished / fixed its implementation.
+
 ## features to added
-- 3 fold rep TDD
-- 50 move rule TDD
 - game clock
 - more tests (move verification, piece pinning, check, checkmate, etc.)
