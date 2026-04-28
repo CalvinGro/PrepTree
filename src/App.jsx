@@ -9,17 +9,29 @@ export default function App() {
     const [selected, setSelected] = useState(null);
 
     function userClick(r, c) {
+
         if (selected) {
             const moves = curGame.getMovesFromSquare(selected);
             let isValid = false;
+
             for (let m of moves) {
                 if (m[0] === r && m[1] === c) {
                     isValid = true;
                 }   
             }
+
             if (isValid) {
-                curGame.movePiece(selected, [r, c]);
-                
+                const oldpiece = board.locations[selected[0]][selected[1]];
+
+                if((r===7 || r===0) && oldpiece.type==="pawn"){
+                    const choice = window.prompt("Promote to: queen, knight, rook, or bishop?", "queen");
+                    const valid = ["queen", "knight", "rook", "bishop"];
+                    const promotion = valid.includes(choice.toLowerCase()) ? choice.toLowerCase() : "queen";
+                    curGame.movePiece(selected, [r, c], promotion);
+                }
+                else{
+                    curGame.movePiece(selected, [r, c]);
+                }
                 setBoard({ ...curGame.curBoard, locations:[...curGame.curBoard.locations] });
             }
             
@@ -57,7 +69,7 @@ export default function App() {
                                 height: 50,
                                 backgroundColor: selected?.[0] === r && selected?.[1] === c 
                                     ? 'yellow' 
-                                    : (r + c) % 2 === 0 ? '#d2eed9' : '#543b00',
+                                    : (r + c) % 2 === 1 ? '#d2eed9' : '#543b00',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',

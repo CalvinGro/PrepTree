@@ -420,7 +420,7 @@ export class Board {
         this.locations[a][b] = null;
 
         // handle promotions
-        if ((c === 7 || c === 0) && this.locations[c][d].type === "pawn") {
+        if ((c === 7 || c === 0) && this.locations[c][d] != null&&this.locations[c][d].type === "pawn") {
             this.locations[c][d].type = promotionTo;
         } 
 
