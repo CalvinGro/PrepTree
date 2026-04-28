@@ -235,6 +235,7 @@ export class Game {
         
         
         this.currentMoves = this.curBoard.findValidMoves();
+        console.log(this.currentMoves)
         const values = [...this.currentMoves.values()];
         for (let i = 0; i < values.length; i++) {
             if (values[i].size !== 0) {

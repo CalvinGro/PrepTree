@@ -398,24 +398,24 @@ export class Board {
         this.locations[a][b] = null;
 
         // handle promotions
-        if ((c === 7 || c === 0) && this.locations[c][d].type === "pawn") {
+        if ((c === 7 || c === 0) && this.locations[c][d] != null&&this.locations[c][d].type === "pawn") {
             this.locations[c][d].type = promotionTo;
         } 
 
         // if rooks or king moved, remove the respective castling ability
-        if (a === 0, b === 4) {
+        if (a === 0&& b === 4) {
             this.WLC = false;
             this.WRC = false;
-        } else if (a === 7, b === 4) {
+        } else if (a === 7&& b === 4) {
             this.BLC = false;
             this.BRC = false;
-        } else if (a === 0, b === 0) {
+        } else if (a === 0&& b === 0) {
             this.WLC = false;
-        } else if (a === 0, b === 7) {
+        } else if (a === 0&& b === 7) {
             this.WRC = false;
-        } else if (a === 7, b === 7) {
+        } else if (a === 7&& b === 7) {
             this.BLC = false;
-        } else if (a === 7, b === 0) {
+        } else if (a === 7&&b === 0) {
             this.BRC = false;
         }
     }
