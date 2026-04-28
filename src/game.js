@@ -298,8 +298,7 @@ export class Game {
             }
         }
 
-        // will return board
-        // will return state
+        // will return board and state
         return [this.curBoard, this.state];
     }
 
