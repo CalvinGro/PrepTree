@@ -392,8 +392,30 @@ export class Board {
                 this.locations[7][7] = null;
             }
         }
+
+
+        // if this move is en passant remove the pawn
+        if (this.en_passant[0] === c && this.en_passant[1] === d && this.locations[a][b].type === "pawn") {
+            if (a === 3) {
+                this.locations[3][d] = null;
+            } else {
+                this.locations[4][d] = null;
+            }
+        }
+
+        // reset en passant
         this.en_passant = [];
-        // determine if en passant is possible for oponent
+
+        // determine if en passant is possible for oponent's next move 
+        if (this.locations[a][b].type === "pawn" && Math.abs(c-a) && (a === 1 || a === 6)) {
+            if (a === 6) {
+                this.en_passant = [5,b];
+            } else {
+                this.en_passant = [2,b];
+            }
+        }
+
+
         this.locations[c][d] = this.locations[a][b];
         this.locations[a][b] = null;
 
@@ -858,7 +880,7 @@ export class Board {
             } else {
                 possible_pawn_moves = [[y-1,x-1], [y-1,x], [y-1,x+1]];
             }
-            
+
             for (const [n,m] of possible_pawn_moves) {
                 let sq = this.locations[n][m];
                 // check if each pawn can move straight forward
@@ -870,7 +892,8 @@ export class Board {
                 } else if (sq instanceof Piece && sq.color === this.opColor()) {
                     pawn_moves.get([y,x].join(',')).add([n, m].join(','));
                 // check for en passant moves
-                } else if ([n,m] === this.en_passant) {
+                
+                } else if (n === this.en_passant[0] && m === this.en_passant[1]) {
                     pawn_moves.get([y,x].join(',')).add([n, m].join(','));
                 }
             }
