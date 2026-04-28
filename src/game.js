@@ -227,6 +227,25 @@ export class Game {
      */
     movePiece(start, end, promoteTo = null) {
         // start and end are in form [1,2] not strings
+
+
+        // verify that this is a legal move.
+        if (this.currentMoves.size === 0) {
+            this.currentMoves = this.curBoard.findValidMoves();
+        }
+        let valid_moves = this.getMovesFromSquare(start);
+        let isValid = false;
+        for (let m of valid_moves) {
+            if (m[0] === end[0] && m[1] === end[1]) {
+                isValid = true;
+                break;
+            }
+        }
+        if (!isValid) {
+            console.log("invalid move");
+            return [this.curBoard, this.state];
+        }
+
         let noMoves = true
         const pieceCountBefore = this.piecesLeftCount();
 
@@ -245,7 +264,7 @@ export class Game {
         }
         // check for stalemate or checkmate
         if (noMoves) {
-            if (this.curBoard.isInCheck) {
+            if (this.curBoard.isInCheck()) {
                 if (this.curBoard.turn === 0) {
                     this.state = "Black Wins by Checkmate";
                 } else {

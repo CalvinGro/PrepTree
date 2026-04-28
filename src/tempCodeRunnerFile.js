@@ -1,1 +1,1 @@
-let first_game = new Game();
+en_passant_game_1.curBoard.locations[3][2] instanceof Piece
