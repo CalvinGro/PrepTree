@@ -263,7 +263,7 @@ export class Game {
         }
         // check for stalemate or checkmate
         if (noMoves) {
-            if (this.curBoard.isInCheck) {
+            if (this.curBoard.isInCheck()) {
                 if (this.curBoard.turn === 0) {
                     this.state = "Black Wins by Checkmate";
                 } else {
