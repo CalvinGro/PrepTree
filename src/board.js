@@ -891,8 +891,8 @@ export class Board {
                 // check if each pawn can move diagonal
                 } else if (sq instanceof Piece && sq.color === this.opColor()) {
                     pawn_moves.get([y,x].join(',')).add([n, m].join(','));
+                    
                 // check for en passant moves
-                
                 } else if (n === this.en_passant[0] && m === this.en_passant[1]) {
                     pawn_moves.get([y,x].join(',')).add([n, m].join(','));
                 }

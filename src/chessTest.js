@@ -135,6 +135,7 @@ console.log(en_passant_game_2.curBoard.displayBoardInTerminal());
 // a stalemate via 3-fold repetition. Then the test checks if the game's 
 // state is "Stalemate".
 let three_fold_game = new Game();
+three_fold_game.curBoard.turn = 0;
 let _ = three_fold_game.movePiece([0,1], [2,2]);
 _ = three_fold_game.movePiece([7,1], [5,2]);
 _ = three_fold_game.movePiece([2,2], [0,1]);
