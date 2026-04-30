@@ -25,7 +25,7 @@ export default function App() {
 
                 if((r===7 || r===0) && oldpiece.type==="pawn"){
                     const choice = window.prompt("Promote to: queen, knight, rook, or bishop?", "queen");
-                    const valid = ["queen", "knight", "rook", "bishop"];
+                    const valid = ["queen", "knight", "rook", "bishop","king"];
                     const promotion = valid.includes(choice.toLowerCase()) ? choice.toLowerCase() : "queen";
                     curGame.movePiece(selected, [r, c], promotion);
                 }
@@ -50,7 +50,7 @@ export default function App() {
     return (
         <div className="game-container">
             <h1>{curGame.state}</h1>
-            <p>Turn: {board.turn === 0 ? 'White' : 'Black'}</p>
+            <p>Turn: {board.turn === 0 ? 'Black' : 'White'}</p>
 
             <div style={{ 
                 display: 'grid', 
@@ -69,14 +69,14 @@ export default function App() {
                                 height: 50,
                                 backgroundColor: selected?.[0] === r && selected?.[1] === c 
                                     ? 'yellow' 
-                                    : (r + c) % 2 === 1 ? '#d2eed9' : '#543b00',
+                                    : (r + c) % 2 === 0 ? '#d2eed9' : '#543b00',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 cursor: 'pointer',
                                 fontSize: '40px',
-                                color: piece ? (piece.color === 0 ? 'white' : 'black') : 'transparent',
-                                textShadow: piece ? (piece.color === 0 ? '0 0 3px black' : '0 0 3px white') : 'none',
+                                color: piece ? (piece.color === 0 ? 'black' : 'white') : 'transparent',
+                                textShadow: piece ? (piece.color === 0 ? '0 0 3px white' : '0 0 3px black') : 'none',
                                 userSelect: 'none'
                             }}
                         >

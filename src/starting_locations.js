@@ -52,7 +52,7 @@ export let startingBoard = new Board([
         new Piece("bishop", 1),
         new Piece("knight", 1),
         new Piece("rook", 1)
-    ]], 0, [], true, true, true, true);
+    ]], 1, [], true, true, true, true);
 
 export let promotionBoard = new Board([
     [null, null, null, null, null, null, null, null],

@@ -266,9 +266,9 @@ export class Game {
         if (noMoves) {
             if (this.curBoard.isInCheck()) {
                 if (this.curBoard.turn === 0) {
-                    this.state = "Black Wins by Checkmate";
-                } else {
                     this.state = "White Wins by Checkmate";
+                } else {
+                    this.state = "Black Wins by Checkmate";
                 }
             }   else {
                 this.state = "Stalemate, No Available Moves";
@@ -299,8 +299,7 @@ export class Game {
             }
         }
 
-        // will return board
-        // will return state
+        // will return board and state
         return [this.curBoard, this.state];
     }
 
