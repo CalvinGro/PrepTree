@@ -46,7 +46,7 @@ export default function App() {
         }
 
     }
-
+// Gemini fixed this return
     return (
         <div className="game-container">
             <h1>{curGame.state}</h1>
